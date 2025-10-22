@@ -1,3 +1,361 @@
-<section>
+---
+// Projects Component
+
+// Datos de proyectos de ejemplo (reemplaza con tus proyectos reales)
+const projects = [
+  {
+    id: 1,
+    title: "Emotion Detector - IA en Tiempo Real",
+    description: "Aplicación basada en FastAPI y DeepFace para detectar emociones humanas desde video en tiempo real. Dashboard con gráficas interactivas, análisis estadístico y despliegue en Docker con MongoDB Atlas.",
+    image: "/projects/emotion-detector.png",
+    github: "https://github.com/LOAD-13/Emotion-Detector",
+    tags: ["Python", "FastAPI", "DeepFace", "MongoDB", "Docker"]
+  },
+  {
+    id: 2,
+    title: "Portfolio Interactivo - Joaquin Loa Denegri",
+    description: "Sitio web moderno y dinámico desarrollado con Astro y TailwindCSS. Presenta animaciones suaves, secciones interactivas y diseño responsivo optimizado para cualquier dispositivo móvil o computadora. Compatible con Raspberry Pi.",
+    image: "/projects/project2.png",
+    github: "https://github.com/joaquinloadenegri/proyecto2",
+    tags: ["Astro", "TailwindCSS", "TypeScript"]
+  },
+  {
+    id: 3,
+    title: "API RESTful de Comercio - Joaquin Loa Denegri",
+    description: "API backend escalable con autenticación JWT, integración de pagos y conexión a base de datos PostgreSQL. Ideal para sistemas de e-commerce modernos y seguros compatible con Raspberry Pi y Docker.",
+    image: "/projects/api-commerce.png",
+    github: "https://github.com/joaquinloadenegri/proyecto3",
+    tags: ["Spring Boot", "PostgreSQL", "Java"]
+  },
+  {
+    id: 4,
+    title: "Dashboard Analítico",
+    description: "Panel de control interactivo con visualización de métricas en tiempo real. Desarrollado con React y Python, incluye integración con MySQL y gráficas personalizadas.",
+    image: "/projects/project4.png",
+    github: "https://github.com/joaquinloadenegri/proyecto4",
+    tags: ["React", "Python", "MySQL"]
+  },
+  {
+    id: 5,
+    title: "App Móvil de Tareas",
+    description: "Aplicación multiplataforma enfocada en productividad, desarrollada con React y Supabase. Permite gestión de tareas, sincronización en la nube y diseño limpio y moderno.",
+    image: "/projects/project5.png",
+    github: "https://github.com/joaquinloadenegri/proyecto5",
+    tags: ["React", "Supabase", "CSS"]
+  },
+  {
+    id: 6,
+    title: "Sistema de Reservas",
+    description: "Plataforma web de reservas online con calendario interactivo y notificaciones automáticas. Desarrollada con Node.js y MongoDB para gestión eficiente de datos y usuarios.",
+    image: "/projects/project6.png",
+    github: "https://github.com/joaquinloadenegri/proyecto6",
+    tags: ["Node.js", "MongoDB", "HTML"]
+  }
+];
+
+
+// Colores para los tags de tecnologías
+const tagColors: Record<string, string> = {
+  "React": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  "Node.js": "bg-green-500/20 text-green-400 border-green-500/30",
+  "MongoDB": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  "Express.js": "bg-gray-500/20 text-gray-400 border-gray-500/30",
+  "Astro": "bg-orange-500/20 text-orange-400 border-orange-500/30",
+  "TailwindCSS": "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
+  "TypeScript": "bg-blue-600/20 text-blue-500 border-blue-600/30",
+  "Spring Boot": "bg-lime-500/20 text-lime-400 border-lime-500/30",
+  "PostgreSQL": "bg-indigo-500/20 text-indigo-400 border-indigo-500/30",
+  "Java": "bg-red-500/20 text-red-400 border-red-500/30",
+  "Python": "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+  "MySQL": "bg-sky-500/20 text-sky-400 border-sky-500/30",
+  "Supabase": "bg-emerald-600/20 text-emerald-500 border-emerald-600/30",
+  "CSS": "bg-pink-500/20 text-pink-400 border-pink-500/30",
+  "HTML": "bg-orange-600/20 text-orange-500 border-orange-600/30"
+};
+---
+
+<section id="proyectos" class="relative min-h-screen py-20 px-6 overflow-hidden">
+  
+  <div class="container mx-auto max-w-7xl">
     
+    <!-- Título -->
+    <div class="text-center mb-12 animate-fade-in-down">
+      <h2 class="text-5xl md:text-6xl font-bold text-white">
+        Proyectos
+      </h2>
+    </div>
+
+    <!-- Contenedor Principal con Borde Azul -->
+    <div class="projects-container bg-[#0f172a]/60 backdrop-blur-xl border border-cyan-400/30 rounded-3xl p-6 md:p-8 shadow-md shadow-cyan-500/10">
+      
+      <!-- Header: Filtros y Vista -->
+      <div class="flex items-center justify-between mb-8">
+        
+        <!-- Menú Hamburguesa (Filtros) - Con menú desplegable -->
+        <div class="relative">
+          <button id="filter-btn" class="flex items-center gap-2 px-4 py-2 bg-gray-800/70 hover:bg-sky-500/30 rounded-lg transition-all duration-300 border border-gray-700 hover:border-sky-500">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span class="text-sm text-white font-medium hidden sm:inline">Todo</span>
+          </button>
+
+          <!-- Menú Desplegable -->
+          <div id="filter-menu" class="absolute top-full left-0 mt-2 hidden opacity-0 transform -translate-y-2 transition-all duration-300 z-20">
+            <div class="bg-gray-800/95 backdrop-blur-lg rounded-lg border border-sky-500/30 shadow-2xl shadow-sky-500/20 p-4 min-w-[250px]">
+              <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500 hover:scale-105 transition-transform">
+                  Todos
+                </button>
+                {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
+                  <button class={`filter-tag px-3 py-1 rounded-full text-xs font-medium border hover:scale-105 transition-transform ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selector de Vista -->
+        <div class="flex items-center gap-2 bg-gray-800/70 rounded-lg p-1 border border-gray-700">
+          <button data-view="1" class="view-btn active p-2 rounded hover:bg-sky-500/30 transition-all duration-300">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            </svg>
+          </button>
+          <button data-view="2" class="view-btn p-2 rounded hover:bg-sky-500/30 transition-all duration-300">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="8" height="18" rx="2"></rect>
+              <rect x="13" y="3" width="8" height="18" rx="2"></rect>
+            </svg>
+          </button>
+          <button data-view="3" class="view-btn p-2 rounded hover:bg-sky-500/30 transition-all duration-300">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="5" height="18" rx="1"></rect>
+              <rect x="10" y="3" width="5" height="18" rx="1"></rect>
+              <rect x="17" y="3" width="5" height="18" rx="1"></rect>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú de Filtros (oculto por defecto) -->
+      <div id="filter-menu" class="hidden mb-6 p-4 bg-gray-800/50 rounded-lg border border-sky-500/30">
+        <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>
+        <div class="flex flex-wrap gap-2">
+          <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500">
+            Todos
+          </button>
+          {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
+            <button class={`filter-tag px-3 py-1 rounded-full text-xs font-medium border ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Menú de Filtros (oculto por defecto) -->
+      <div id="filter-menu" class="hidden mb-6 p-4 bg-gray-800/50 rounded-lg border border-sky-500/30">
+        <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>
+        <div class="flex flex-wrap gap-2">
+          <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500">
+            Todos
+          </button>
+          {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
+            <button class={`filter-tag px-3 py-1 rounded-full text-xs font-medium border ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Grid de Proyectos -->
+      <div id="projects-grid" class="grid grid-cols-1 gap-6 view-3">
+        
+        {projects.map((project) => (
+          <div class="project-card bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 transition-all duration-300 hover:scale-[1.02] border border-gray-700/50" data-tags={project.tags.join(',')}>
+            
+            <div class="p-6">
+              <!-- Título del Proyecto -->
+              <h3 class="text-xl font-bold text-white mb-3">
+                {project.title}
+              </h3>
+
+              <!-- Descripción -->
+              <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+                {project.description}
+              </p>
+
+              <!-- Imagen del Proyecto -->
+              <div class="w-full h-48 bg-gray-800 rounded-xl mb-4 overflow-hidden">
+
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  class="w-full h-full object-cover"
+                  onerror="this.style.display='none'"
+                />
+              </div>
+
+              <!-- Botón GitHub -->
+              <a 
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-gray-700/70 hover:bg-sky-600 text-white rounded-lg transition-all duration-300 mb-4 group border border-gray-600 hover:border-sky-500"
+              >
+                <img src="../../public/github.svg" alt="GitHub" class="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span class="text-sm font-medium">Ver Código</span>
+              </a>
+
+              <!-- Tags de Tecnologías -->
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map(tag => (
+                  <span class={`px-3 py-1 rounded-full text-xs font-medium border ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+    </div>
+
+  </div>
 </section>
+
+<script>
+  // Toggle del menú de filtros con animación
+  const filterBtn = document.getElementById('filter-btn');
+  const filterMenu = document.getElementById('filter-menu');
+  let isFilterOpen = false;
+
+  filterBtn?.addEventListener('click', () => {
+    isFilterOpen = !isFilterOpen;
+    
+    if (isFilterOpen) {
+      filterMenu?.classList.remove('hidden');
+      setTimeout(() => {
+        filterMenu?.classList.remove('opacity-0', '-translate-y-2');
+        filterMenu?.classList.add('opacity-100', 'translate-y-0');
+      }, 10);
+    } else {
+      filterMenu?.classList.remove('opacity-100', 'translate-y-0');
+      filterMenu?.classList.add('opacity-0', '-translate-y-2');
+      setTimeout(() => {
+        filterMenu?.classList.add('hidden');
+      }, 300);
+    }
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!filterBtn?.contains(e.target as Node) && !filterMenu?.contains(e.target as Node)) {
+      if (isFilterOpen) {
+        filterMenu?.classList.remove('opacity-100', 'translate-y-0');
+        filterMenu?.classList.add('opacity-0', '-translate-y-2');
+        setTimeout(() => {
+          filterMenu?.classList.add('hidden');
+        }, 300);
+        isFilterOpen = false;
+      }
+    }
+  });
+
+  // Sistema de filtrado por tags
+  const filterTags = document.querySelectorAll('.filter-tag');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+      // Actualizar botón activo
+      filterTags.forEach(t => {
+        t.classList.remove('bg-sky-500', 'text-white');
+        const originalClasses = (t as HTMLElement).dataset.originalClasses;
+        if (originalClasses) {
+          t.className = originalClasses;
+        }
+      });
+      
+      // Guardar clases originales si no existen
+      if (!(tag as HTMLElement).dataset.originalClasses) {
+        (tag as HTMLElement).dataset.originalClasses = tag.className;
+      }
+      
+      tag.classList.add('bg-sky-500', 'text-white', 'border-sky-500');
+
+      const selectedTag = tag.textContent?.trim();
+
+      // Filtrar proyectos
+      projectCards.forEach(card => {
+        const cardTags = (card as HTMLElement).dataset.tags?.split(',') || [];
+        
+        if (selectedTag === 'Todos' || cardTags.includes(selectedTag || '')) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Cambio de vista (1, 2 o 3 columnas)
+  const viewBtns = document.querySelectorAll('.view-btn');
+  const projectsGrid = document.getElementById('projects-grid');
+
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Actualizar botón activo
+      viewBtns.forEach(b => b.classList.remove('active', 'bg-sky-500/50'));
+      btn.classList.add('active', 'bg-sky-500/50');
+
+      const view = btn.getAttribute('data-view');
+
+      // Cambiar grid
+      projectsGrid?.classList.remove('view-1', 'view-2', 'view-3');
+      projectsGrid?.classList.add(`view-${view}`);
+    });
+  });
+</script>
+
+<style>
+    @import "tailwindcss";
+  /* Vistas responsivas */
+  .view-1 {
+    @apply grid-cols-1;
+  }
+
+  .view-2 {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+
+  .view-3 {
+    @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  /* Botón de vista activo */
+  .view-btn.active {
+    @apply bg-sky-500/50;
+  }
+
+  /* Animación fade-in-down */
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out;
+  }
+</style>

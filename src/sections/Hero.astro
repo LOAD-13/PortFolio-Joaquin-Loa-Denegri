@@ -108,29 +108,19 @@
     </div>
   
     <!-- Ícono de Scroll -->
-    <div class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-      <svg 
-        id="mscroll" 
-        class="pc" 
-        width="40px" 
-        height="60px" 
-        viewBox="0 0 247 390" 
-        version="1.1" 
-        xmlns="http://www.w3.org/2000/svg" 
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <path 
-          id="wheel" 
-          d="M123.359,79.775l0,72.843" 
-          style="fill:none;stroke:#fff;stroke-width:20px;opacity:0.8"
-        ></path>
-        <path 
-          id="mouse" 
-          d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" 
-          style="fill:none;stroke:#fff;stroke-width:20px;opacity:0.8"
-        ></path>
-      </svg>
-    </div>
+    <!-- Ícono de Scroll -->
+<div class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+    <svg
+      id="mscroll"
+      class="pc"
+      width="40" height="60" viewBox="0 0 247 390"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path id="wheel" d="M123.359,79.775l0,72.843" style="fill:none;stroke:#fff;stroke-width:20px;opacity:0.8"></path>
+      <path id="mouse" d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" style="fill:none;stroke:#fff;stroke-width:20px;opacity:0.8"></path>
+    </svg>
+  </div>
+  
   
 </main>
   
@@ -182,4 +172,39 @@
         opacity: 0.3;
       }
     }
+
+    /* Estado base con transición para que anime ENTRAR y SALIR */
+#mscroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: opacity, transform;
+}
+
+/* Estado oculto (salida suave) */
+#mscroll.is-hidden {
+  opacity: 0;
+  transform: translateY(10px); /* opcional: se hunde un poco */
+  pointer-events: none;
+}
   </style>
+
+<script>
+    const MIN_SCROLL = 100; // píxeles para activar
+    const el = document.getElementById('mscroll');
+  
+    const onScroll = () => {
+      if (!el) return;
+      if (window.scrollY > MIN_SCROLL) {
+        el.classList.add('is-hidden');   // se desvanece
+      } else {
+        el.classList.remove('is-hidden'); // reaparece con la misma transición
+      }
+    };
+  
+    // primer chequeo y luego escuchar scroll
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  </script>
+  
+  

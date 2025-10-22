@@ -1,6 +1,268 @@
-<section class="mt-24 md:mt-100">
-    <div class="container mx-auto px-6 py-12 z-10 relative">
-      <h2 class="text-4xl font-bold text-white text-center">Tecnologías</h2>
-    </div>
-  </section>
+---
+// Technologies Component
+
+// Datos de las tecnologías organizadas por categorías
+const technologies = [
+  {
+    category: "Lenguajes de Programación",
+    folder: "programing",
+    techs: [
+      { name: "Python", icon: "Python.svg" },
+      { name: "Java", icon: "Java.svg" },
+      { name: "JavaScript", icon: "Js.svg" },
+      { name: "C#", icon: "CSharp.svg" },
+      { name: "C", icon: "C.svg" },
+      { name: "C++", icon: "C++.svg" },
+      { name: "Haskell", icon: "Haskell.svg" },
+      { name: "Prolog", icon: "Prolog.svg" },
+      { name: "TypeScript", icon: "TS.svg" }
+    ]
+  },
+  {
+    category: "FrontEnd",
+    folder: "FrontEnd",
+    techs: [
+      { name: "HTML", icon: "Html.svg" },
+      { name: "CSS", icon: "Css.svg" },
+      { name: "Astro", icon: "Astro.svg" },
+      { name: "React", icon: "React.svg" }
+    ]
+  },
+  {
+    category: "BackEnd",
+    folder: "BackEnd",
+    techs: [
+      { name: "Spring Boot", icon: "Spring.svg" },
+      { name: "Node.js", icon: "NodeJS.svg" },
+      { name: "Express.js", icon: "Express.svg" },
+      { name: "Supabase", icon: "Supabase.svg" }
+    ]
+  },
+  {
+    category: "Bases de Datos",
+    folder: "BD",
+    techs: [
+      { name: "MySQL", icon: "Mysql.svg" },
+      { name: "SQL Server", icon: "Sql server.svg" },
+      { name: "MongoDB", icon: "Mongo.svg" },
+      { name: "PostgreSQL", icon: "Postgre.svg" }
+    ]
+  },
+  {
+    category: "Herramientas y Entornos",
+    folder: "Tools",
+    techs: [
+      { name: "VS Code", icon: "VSCode.svg" },
+      { name: "NetBeans", icon: "Netbenas.svg" },
+      { name: "Eclipse", icon: "Eclipse.svg" }
+    ]
+  },
+  {
+    category: "Control de Versiones",
+    folder: "Version",
+    techs: [
+      { name: "Git", icon: "Git.svg" },
+      { name: "GitHub", icon: "Github-t.svg" }
+    ]
+  },
+  {
+    category: "Virtualización y Entornos",
+    folder: "VM",
+    techs: [
+      { name: "VirtualBox", icon: "VRBox.svg" },
+      { name: "VMware", icon: "VMware.svg" },
+      { name: "Docker", icon: "docker.svg" }
+    ]
+  },
+  {
+    category: "Otros Conocimientos",
+    folder: "Other",
+    techs: [
+      { name: "APIs REST", icon: "API.svg" },
+      { name: "Sistemas Operativos", icon: "Linux.svg" },
+      { name: "Fundamentos de Redes", icon: "Cisco.svg" }
+    ]
+  }
+];
+---
+
+<section id="tecnologias" class="relative min-h-screen py-20 px-6 overflow-hidden">
   
+  <!-- Contenedor Principal -->
+  <div class="container mx-auto max-w-7xl">
+    
+    <!-- Título y Descripción -->
+    <div class="text-center mb-16 space-y-4 animate-fade-in-down">
+      <h2 class="text-5xl md:text-6xl font-bold text-white">
+        Tecnologías
+      </h2>
+      <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+        Tecnologías y herramientas que he aprendido y utilizo en el desarrollo de mis proyectos.
+      </p>
+    </div>
+
+    <!-- Grid de Tarjetas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      
+      {technologies.map((category, index) => (
+        <div 
+          class="tech-card bg-gray-900 rounded-lg overflow-hidden animate-bounce-fade-in relative group"
+          style={`animation-delay: ${index * 0.1}s`}
+        >
+          
+          <!-- Bordes con efecto Neón -->
+          <div class="neon-border neon-top"></div>
+          <div class="neon-border neon-right"></div>
+          <div class="neon-border neon-bottom"></div>
+          <div class="neon-border neon-left"></div>
+
+          <!-- Círculos de colores tipo terminal -->
+          <div class="flex p-3 gap-2">
+            <span class="bg-red-500 w-3 h-3 rounded-full"></span>
+            <span class="bg-yellow-500 w-3 h-3 rounded-full"></span>
+            <span class="bg-green-500 w-3 h-3 rounded-full"></span>
+          </div>
+
+          <!-- Título de la categoría -->
+          <div class="px-4 pb-3">
+            <h3 class="text-white font-semibold text-sm mb-4">
+              {category.category}
+            </h3>
+
+            <!-- Grid de Iconos -->
+            <div class="grid grid-cols-3 gap-4">
+              {category.techs.map((tech) => (
+                <div class="flex flex-col items-center gap-2 group/tech">
+                  <div class="w-12 h-12 flex items-center justify-center p-2 bg-gray-800/50 rounded-lg transition-all duration-300 group-hover/tech:bg-sky-500/20 group-hover/tech:scale-110">
+                    <img 
+                      src={`/${category.folder}/${tech.icon}`} 
+                      alt={tech.name}
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span class="text-[10px] text-gray-400 text-center leading-tight group-hover/tech:text-sky-400 transition-colors duration-300">
+                    {tech.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Contenedor de tarjeta con posición relativa para los bordes */
+  .tech-card {
+    position: relative;
+    min-height: 340px;
+    
+  }
+
+  /* Bordes neón (ocultos por defecto) */
+  .neon-border {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  /* Borde superior */
+  .neon-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+
+  /* Borde derecho */
+  .neon-right {
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #06b6d4, transparent);
+  }
+
+  /* Borde inferior */
+  .neon-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+
+  /* Borde izquierdo */
+  .neon-left {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #06b6d4, transparent);
+  }
+
+  /* Mostrar borde superior al hover en la parte superior */
+  .tech-card:hover .neon-top {
+    opacity: 1;
+  }
+
+  /* Mostrar borde derecho al hover en la parte derecha */
+  .tech-card:hover .neon-right {
+    opacity: 1;
+  }
+
+  /* Mostrar borde inferior al hover en la parte inferior */
+  .tech-card:hover .neon-bottom {
+    opacity: 1;
+  }
+
+  /* Mostrar borde izquierdo al hover en la parte izquierda */
+  .tech-card:hover .neon-left {
+    opacity: 1;
+  }
+
+  /* Efecto de glow adicional al hover */
+  .tech-card:hover {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+
+  /* Animación personalizada para bounce-fade-in */
+  @keyframes bounce-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.9);
+    }
+    50% {
+      transform: translateY(10px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-bounce-fade-in {
+    animation: bounce-fade-in 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Animación fade-in-down para el título */
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down 0.8s ease-out;
+  }
+</style>
