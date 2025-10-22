@@ -1,0 +1,185 @@
+---
+// Hero Component
+---
+
+<main
+  id="hero"
+  class="relative min-h-screen flex items-center justify-center overflow-visible pt-10 pb-24 md:pb-10"
+>
+
+  
+    <!-- Fondo con Burbujas SVG -->
+    <div class="absolute top--1 left-0 w-full z-0">
+        <img 
+          src="/bg.svg" 
+          alt="Background bubbles" 
+          class="w-full h-auto opacity-90 block"
+        />
+      </div>
+      
+  
+    <!-- Contenido Principal -->
+    <div class="container mx-auto px-6 py-12 z-10 relative max-w-7xl">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Columna Izquierda: Información -->
+        <div class="text-left space-y-6 animate-fade-in-left">
+          
+          <!-- Nombre -->
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+            Joaquin Loa <span class="text-cyan-400">Denegri</span>
+          </h1>
+  
+          <!-- Subtítulos -->
+          <div class="space-y-2">
+            <p class="text-2xl md:text-3xl font-semibold text-gray-200">
+              Desarrollador de Software
+            </p>
+            <p class="text-lg md:text-xl text-gray-400">
+              Estudiante de Ing. de Software
+            </p>
+          </div>
+  
+          <!-- Botones de Acción -->
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            
+            <!-- Botón CV -->
+            <a 
+              href="../../public/CV_JoaquinLoaDenegri.pdf" 
+              download 
+              class="flex items-center gap-3 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105"
+            >
+              <img src="/cv.svg" alt="CV Icon" class="w-5 h-5" />
+              <span>CV</span>
+            </a>
+  
+            <!-- Iconos Sociales -->
+            <div class="flex items-center gap-3">
+              
+              <!-- GitHub -->
+              <a 
+                href="https://github.com/LOAD-13?tab=overview&from=2025-10-01&to=2025-10-21" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-12 h-12 flex items-center justify-center bg-gray-800/50 hover:bg-cyan-500/20 rounded-full transition-all duration-300 border border-gray-700 hover:border-cyan-500 hover:scale-110"
+              >
+                <img src="/github.svg" alt="GitHub" class="w-6 h-6" />
+              </a>
+  
+              <!-- LinkedIn -->
+              <a 
+                href="https://www.linkedin.com/in/joaquín-loa-denegri-758943210" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-12 h-12 flex items-center justify-center bg-gray-800/50 hover:bg-cyan-500/20 rounded-full transition-all duration-300 border border-gray-700 hover:border-cyan-500 hover:scale-110"
+              >
+                <img src="/linkedn.svg" alt="LinkedIn" class="w-6 h-6" />
+              </a>
+  
+              <!-- Gmail -->
+              <a 
+                href="jloadenegri@gmail.com" 
+                class="w-12 h-12 flex items-center justify-center bg-gray-800/50 hover:bg-cyan-500/20 rounded-full transition-all duration-300 border border-gray-700 hover:border-cyan-500 hover:scale-110"
+              >
+                <img src="/gmail.svg" alt="Gmail" class="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Columna Derecha: Foto -->
+        <div class="flex justify-center lg:justify-end animate-fade-in-right">
+          <div class="relative">
+            <!-- Shadow Box / Halo -->
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-blue-600/30 rounded-full blur-2xl scale-110"></div>
+            
+            <!-- Foto Circular -->
+            <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-cyan-500/50 shadow-2xl shadow-cyan-500/30">
+              <img 
+                src="/Photo.png" 
+                alt="Joaquin Loa Denegri" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  
+    <!-- Ícono de Scroll -->
+    <div class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+      <svg 
+        id="mscroll" 
+        class="pc" 
+        width="40px" 
+        height="60px" 
+        viewBox="0 0 247 390" 
+        version="1.1" 
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <path 
+          id="wheel" 
+          d="M123.359,79.775l0,72.843" 
+          style="fill:none;stroke:#fff;stroke-width:20px;opacity:0.8"
+        ></path>
+        <path 
+          id="mouse" 
+          d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z" 
+          style="fill:none;stroke:#fff;stroke-width:20px;opacity:0.8"
+        ></path>
+      </svg>
+    </div>
+  
+</main>
+  
+  <style>
+    /* Animaciones personalizadas */
+    @keyframes fade-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    @keyframes fade-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    .animate-fade-in-left {
+      animation: fade-in-left 1s ease-out;
+    }
+  
+    .animate-fade-in-right {
+      animation: fade-in-right 1s ease-out;
+    }
+  
+    /* Animación de la rueda del mouse */
+    #wheel {
+      animation: scroll-wheel 2s infinite;
+      transform-origin: center;
+    }
+  
+    @keyframes scroll-wheel {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(20px);
+        opacity: 0.3;
+      }
+    }
+  </style>

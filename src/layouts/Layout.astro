@@ -3,20 +3,34 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<link rel="icon" type="image/png" href="../../public/favicon.png" />
+		<title>Joaquin Loa Denegri's Portfolio</title>
+		<meta name="description" content="Joaquin Loa Denegri's Portfolio" />
+		<meta name="keywords" content="Joaquin Loa Denegri, Portfolio, Developer, Software Engineer, Web Developer, Full Stack Developer, Frontend Developer, Backend Developer, Mobile Developer, AI Developer, Machine Learning Developer, Data Science Developer, Cybersecurity Developer, Blockchain Developer, Cryptocurrency Developer, Crypto Developer, NFT Developer, Smart Contract Developer, Solidity Developer, Ethereum Developer, Bitcoin Developer, Blockchain Developer, Cryptocurrency Developer, Crypto Developer, NFT Developer, Smart Contract Developer, Solidity Developer, Ethereum Developer, Bitcoin Developer" />
+		<meta name="author" content="Joaquin Loa Denegri" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="bingbot" content="index, follow" />
+		<meta name="yandexbot" content="index, follow" />
+		<meta name="sitemap" content="https://joaquinloadenegri.com/sitemap.xml" />
 	</head>
 	<body>
+		
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	@import "tailwindcss";
+	@plugin "@midudev/tailwind-animations";
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: #070a17;
+		height: 200vh;
+		
 	}
 </style>

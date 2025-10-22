@@ -1,11 +1,18 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../sections/Header.astro';
+import Hero from '../sections/Hero.astro';
+import Technologies from '../sections/Technologies.astro';
+import Projects from '../sections/Projects.astro';
+import Contact from '../sections/Contact.astro';
+import Footer from '../sections/Footer.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<Header />
+	<Hero />
+	<Technologies />
+	<Projects />
+	<Contact />
+	<Footer />
 </Layout>
