@@ -5,9 +5,9 @@
 const projects = [
   {
     id: 1,
-    title: "Emotion Detector - IA en Tiempo Real",
+    title: "Detector de Emociones - IA en Tiempo Real",
     description: "Aplicación basada en FastAPI y DeepFace para detectar emociones humanas desde video en tiempo real. Dashboard con gráficas interactivas, análisis estadístico y despliegue en Docker con MongoDB Atlas.",
-    image: "/projects/emotion-detector.png",
+    image: "/projects/Emotion Detector.png",
     github: "https://github.com/LOAD-13/Emotion-Detector",
     tags: ["Python", "FastAPI", "DeepFace", "MongoDB", "Docker"]
   },
@@ -51,6 +51,7 @@ const projects = [
     github: "https://github.com/joaquinloadenegri/proyecto6",
     tags: ["Node.js", "MongoDB", "HTML"]
   }
+  
 ];
 
 
@@ -81,7 +82,7 @@ const tagColors: Record<string, string> = {
     <!-- Título -->
     <div class="text-center mb-12 animate-fade-in-down">
       <h2 class="text-5xl md:text-6xl font-bold text-white">
-        Proyectos
+        <span data-i18n="projects.titulo">Proyectos</span>
       </h2>
     </div>
 
@@ -97,16 +98,16 @@ const tagColors: Record<string, string> = {
             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-            <span class="text-sm text-white font-medium hidden sm:inline">Todo</span>
+            <span class="text-sm text-white font-medium hidden sm:inline"><span data-i18n="projects.todo">Todo</span></span>
           </button>
 
           <!-- Menú Desplegable -->
           <div id="filter-menu" class="absolute top-full left-0 mt-2 hidden opacity-0 transform -translate-y-2 transition-all duration-300 z-20">
             <div class="bg-gray-800/95 backdrop-blur-lg rounded-lg border border-sky-500/30 shadow-2xl shadow-sky-500/20 p-4 min-w-[250px]">
-              <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>
+              <p class="text-white text-sm mb-3 font-medium"><span data-i18n="projects.filtrar">Filtrar por tecnología:</span></p>
               <div class="flex flex-wrap gap-2">
                 <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500 hover:scale-105 transition-transform">
-                  Todos
+                  <span data-i18n="projects.todos">Todos</span>
                 </button>
                 {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
                   <button class={`filter-tag px-3 py-1 rounded-full text-xs font-medium border hover:scale-105 transition-transform ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
@@ -143,10 +144,10 @@ const tagColors: Record<string, string> = {
 
       <!-- Menú de Filtros (oculto por defecto) -->
       <div id="filter-menu" class="hidden mb-6 p-4 bg-gray-800/50 rounded-lg border border-sky-500/30">
-        <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>
+        <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>  
         <div class="flex flex-wrap gap-2">
-          <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500">
-            Todos
+          <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500 hover:scale-105 transition-transform">
+            <span data-i18n="projects.todos">Todos</span>
           </button>
           {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
             <button class={`filter-tag px-3 py-1 rounded-full text-xs font-medium border ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
@@ -161,7 +162,7 @@ const tagColors: Record<string, string> = {
         <p class="text-white text-sm mb-3 font-medium">Filtrar por tecnología:</p>
         <div class="flex flex-wrap gap-2">
           <button class="filter-tag px-3 py-1 rounded-full text-xs font-medium bg-sky-500 text-white border border-sky-500">
-            Todos
+            <span data-i18n="projects.todos">Todos</span>
           </button>
           {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
             <button class={`filter-tag px-3 py-1 rounded-full text-xs font-medium border ${tagColors[tag] || 'bg-gray-500/20 text-gray-400 border-gray-500/30'}`}>
@@ -179,12 +180,12 @@ const tagColors: Record<string, string> = {
             
             <div class="p-6">
               <!-- Título del Proyecto -->
-              <h3 class="text-xl font-bold text-white mb-3">
+              <h3 class="text-xl font-bold text-white mb-3" data-i18n={`projects.proyecto${project.id - 1}.titulo`}>
                 {project.title}
               </h3>
 
               <!-- Descripción -->
-              <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+              <p class="text-gray-300 text-sm mb-4 leading-relaxed" data-i18n={`projects.proyecto${project.id - 1}.descripcion`}>
                 {project.description}
               </p>
 
@@ -207,7 +208,7 @@ const tagColors: Record<string, string> = {
                 class="inline-flex items-center gap-2 px-4 py-2 bg-gray-700/70 hover:bg-sky-600 text-white rounded-lg transition-all duration-300 mb-4 group border border-gray-600 hover:border-sky-500"
               >
                 <img src="../../public/github.svg" alt="GitHub" class="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span class="text-sm font-medium">Ver Código</span>
+                <span class="text-sm font-medium"><span data-i18n="projects.verCodigo">Ver Código</span></span>
               </a>
 
               <!-- Tags de Tecnologías -->
