@@ -173,7 +173,7 @@ export const translations = {
           },
           {
             titulo: "Analytics Dashboard",
-            descripcion: "Interactive control panel with real-time metrics visualization. Developed with React and Python, includes MySQL integration and custom charts."
+            descripcion: "Interactive control panel with Artificial Intelligence real-time metrics visualization. Developed with React and Python, includes MySQL integration and custom charts."
           },
           {
             titulo: "Task Mobile App",
