@@ -50,25 +50,6 @@
 			  document.querySelectorAll('[data-i18n="hero.cv"]').forEach(el => {
 				el.textContent = trans.hero.cv;
 			  });
-			  document.querySelectorAll('[data-i18n="about.logros.titulo"]').forEach(el => {
-  el.textContent = trans.about.logros.titulo;
-  
-});
-// Actualizar About
-document.querySelectorAll('[data-i18n="about.titulo"]').forEach(el => {
-  el.textContent = trans.about.titulo;
-});
-
-// Agregar esta línea para el título de biografía
-document.querySelectorAll('[data-i18n="about.biografia.titulo"]').forEach(el => {
-  el.textContent = trans.about.biografia.titulo;
-});
-
-document.querySelectorAll('[data-i18n="about.formulario.titulo"]').forEach(el => {
-  el.textContent = trans.about.formulario.titulo;
-});
-
-
 		  
 			  // Actualizar Technologies
 			  document.querySelectorAll('[data-i18n="technologies.titulo"]').forEach(el => {
@@ -88,21 +69,35 @@ document.querySelectorAll('[data-i18n="about.formulario.titulo"]').forEach(el =>
 			  document.querySelectorAll('[data-i18n="projects.filtrar"]').forEach(el => {
 				el.textContent = trans.projects.filtrar;
 			  });
+			  document.querySelectorAll('[data-i18n="projects.todos"]').forEach(el => {
+				el.textContent = trans.projects.todos;
+			  });
 			  document.querySelectorAll('[data-i18n="projects.verCodigo"]').forEach(el => {
 				el.textContent = trans.projects.verCodigo;
 			  });
-		  
-			  // Actualizar títulos y descripciones de proyectos
-			  trans.projects.proyectos.forEach((proyecto, index) => {
-				const titulo = document.querySelector(`[data-i18n="projects.proyecto${index}.titulo"]`);
-				const descripcion = document.querySelector(`[data-i18n="projects.proyecto${index}.descripcion"]`);
-				if (titulo) titulo.textContent = proyecto.titulo;
-				if (descripcion) descripcion.textContent = proyecto.descripcion;
+			  document.querySelectorAll('[data-i18n="projects.liveDemo"]').forEach(el => {
+				el.textContent = trans.projects.liveDemo;
 			  });
+		  
+			  // Actualizar títulos y descripciones de proyectos (0-15)
+			  for (let i = 0; i < 16; i++) {
+				const proyectoKey = `proyecto${i}` as keyof typeof trans.projects;
+				const proyecto = trans.projects[proyectoKey];
+				
+				if (proyecto && typeof proyecto === 'object' && 'titulo' in proyecto && 'descripcion' in proyecto) {
+				  const titulo = document.querySelector(`[data-i18n="projects.proyecto${i}.titulo"]`);
+				  const descripcion = document.querySelector(`[data-i18n="projects.proyecto${i}.descripcion"]`);
+				  if (titulo) titulo.textContent = proyecto.titulo;
+				  if (descripcion) descripcion.textContent = proyecto.descripcion;
+				}
+			  }
 		  
 			  // Actualizar About
 			  document.querySelectorAll('[data-i18n="about.titulo"]').forEach(el => {
 				el.textContent = trans.about.titulo;
+			  });
+			  document.querySelectorAll('[data-i18n="about.biografia.titulo"]').forEach(el => {
+				el.textContent = trans.about.biografia.titulo;
 			  });
 			  document.querySelectorAll('[data-i18n="about.formulario.titulo"]').forEach(el => {
 				el.textContent = trans.about.formulario.titulo;
@@ -123,56 +118,55 @@ document.querySelectorAll('[data-i18n="about.formulario.titulo"]').forEach(el =>
 				el.textContent = trans.about.formulario.enviar;
 			  });
 			  document.querySelectorAll('[data-i18n="about.logros.titulo"]').forEach(el => {
-  el.textContent = trans.about.logros.titulo;
-});
-
-
+				el.textContent = trans.about.logros.titulo;
+			  });
+		  
 			  // Actualizar elementos con HTML interno (biografía)
-document.querySelectorAll('[data-i18n-html]').forEach(el => {
-  const key = el.getAttribute('data-i18n-html');
-  if (!key) return;
-  
-  const keys = key.split('.');
-  let value: any = trans;
-  for (const k of keys) {
-    value = value?.[k];
-  }
-  
-  if (value && typeof value === 'string') {
-    // Mantener los spans con clase text-sky-400
-    const highlighted = value.match(/\*\*(.*?)\*\*/g);
-    let html = value;
-    
-    if (highlighted) {
-      highlighted.forEach(match => {
-        const text = match.replace(/\*\*/g, '');
-        html = html.replace(match, `<span class="text-sky-400 font-semibold">${text}</span>`);
-      });
-    }
-    
-    el.innerHTML = html;
-  }
-});
-
-// Actualizar logros
-document.querySelectorAll('[data-i18n="about.logros.logro1.titulo"]').forEach(el => {
-  el.textContent = trans.about.logros.logro1.titulo;
-});
-document.querySelectorAll('[data-i18n="about.logros.logro1.descripcion"]').forEach(el => {
-  el.textContent = trans.about.logros.logro1.descripcion;
-});
-document.querySelectorAll('[data-i18n="about.logros.logro2.titulo"]').forEach(el => {
-  el.textContent = trans.about.logros.logro2.titulo;
-});
-document.querySelectorAll('[data-i18n="about.logros.logro2.descripcion"]').forEach(el => {
-  el.textContent = trans.about.logros.logro2.descripcion;
-});
-document.querySelectorAll('[data-i18n="about.logros.logro3.titulo"]').forEach(el => {
-  el.textContent = trans.about.logros.logro3.titulo;
-});
-document.querySelectorAll('[data-i18n="about.logros.logro3.descripcion"]').forEach(el => {
-  el.textContent = trans.about.logros.logro3.descripcion;
-});
+			  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+				const key = el.getAttribute('data-i18n-html');
+				if (!key) return;
+				
+				const keys = key.split('.');
+				let value: any = trans;
+				for (const k of keys) {
+				  value = value?.[k];
+				}
+				
+				if (value && typeof value === 'string') {
+				  // Mantener los spans con clase text-sky-400
+				  const highlighted = value.match(/\*\*(.*?)\*\*/g);
+				  let html = value;
+				  
+				  if (highlighted) {
+					highlighted.forEach(match => {
+					  const text = match.replace(/\*\*/g, '');
+					  html = html.replace(match, `<span class="text-sky-400 font-semibold">${text}</span>`);
+					});
+				  }
+				  
+				  el.innerHTML = html;
+				}
+			  });
+		  
+			  // Actualizar logros
+			  document.querySelectorAll('[data-i18n="about.logros.logro1.titulo"]').forEach(el => {
+				el.textContent = trans.about.logros.logro1.titulo;
+			  });
+			  document.querySelectorAll('[data-i18n="about.logros.logro1.descripcion"]').forEach(el => {
+				el.textContent = trans.about.logros.logro1.descripcion;
+			  });
+			  document.querySelectorAll('[data-i18n="about.logros.logro2.titulo"]').forEach(el => {
+				el.textContent = trans.about.logros.logro2.titulo;
+			  });
+			  document.querySelectorAll('[data-i18n="about.logros.logro2.descripcion"]').forEach(el => {
+				el.textContent = trans.about.logros.logro2.descripcion;
+			  });
+			  document.querySelectorAll('[data-i18n="about.logros.logro3.titulo"]').forEach(el => {
+				el.textContent = trans.about.logros.logro3.titulo;
+			  });
+			  document.querySelectorAll('[data-i18n="about.logros.logro3.descripcion"]').forEach(el => {
+				el.textContent = trans.about.logros.logro3.descripcion;
+			  });
 		  
 			  // Actualizar placeholders
 			  const nombreInput = document.getElementById('name') as HTMLInputElement;
@@ -184,18 +178,27 @@ document.querySelectorAll('[data-i18n="about.logros.logro3.descripcion"]').forEa
 			  if (mensajeTextarea) mensajeTextarea.placeholder = trans.about.formulario.mensajePlaceholder;
 		  
 			  // Actualizar Footer
-			  document.querySelectorAll('[data-i18n="footer.descripcion"]').forEach(el => {
-				el.textContent = trans.footer.descripcion;
-			  });
-			  document.querySelectorAll('[data-i18n="footer.enlaces"]').forEach(el => {
-				el.textContent = trans.footer.enlaces;
-			  });
-			  document.querySelectorAll('[data-i18n="footer.conecta"]').forEach(el => {
-				el.textContent = trans.footer.conecta;
-			  });
-			  document.querySelectorAll('[data-i18n="footer.descargarCV"]').forEach(el => {
-				el.textContent = trans.footer.descargarCV;
-			  });
+document.querySelectorAll('[data-i18n="footer.descripcion"]').forEach(el => {
+  el.textContent = trans.footer.descripcion;
+});
+document.querySelectorAll('[data-i18n="footer.enlaces"]').forEach(el => {
+  el.textContent = trans.footer.enlaces;
+});
+document.querySelectorAll('[data-i18n="footer.conecta"]').forEach(el => {
+  el.textContent = trans.footer.conecta;
+});
+document.querySelectorAll('[data-i18n="footer.descargarCV"]').forEach(el => {
+  el.textContent = trans.footer.descargarCV;
+});
+document.querySelectorAll('[data-i18n="footer.copyright"]').forEach(el => {
+  el.textContent = trans.footer.copyright;
+});
+document.querySelectorAll('[data-i18n="footer.hechoCon"]').forEach(el => {
+  el.textContent = trans.footer.hechoCon;
+});
+document.querySelectorAll('[data-i18n="footer.usando"]').forEach(el => {
+  el.textContent = trans.footer.usando;
+});
 			}
 		  
 			// Inicializar idioma al cargar la página
@@ -232,6 +235,7 @@ document.querySelectorAll('[data-i18n="about.logros.logro3.descripcion"]').forEa
 			  });
 			});
 		  </script>
+		  
 	</body>
 </html>
 
