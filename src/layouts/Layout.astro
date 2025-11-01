@@ -1,255 +1,253 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/Logo JLD PNG-Photoroom.png" />
-		<title>Joaquin Loa Denegri's Portfolio</title>
-		<meta name="description" content="Joaquin Loa Denegri's Portfolio" />
-		<meta name="keywords" content="Joaquin Loa Denegri, Portfolio, Developer, Software Engineer, Web Developer, Full Stack Developer, Frontend Developer, Backend Developer, Mobile Developer, AI Developer, Machine Learning Developer, Data Science Developer, Cybersecurity Developer, Blockchain Developer, Cryptocurrency Developer, Crypto Developer, NFT Developer, Smart Contract Developer, Solidity Developer, Ethereum Developer, Bitcoin Developer, Blockchain Developer, Cryptocurrency Developer, Crypto Developer, NFT Developer, Smart Contract Developer, Solidity Developer, Ethereum Developer, Bitcoin Developer" />
-		<meta name="author" content="Joaquin Loa Denegri" />
-		<meta name="robots" content="index, follow" />
-		<meta name="googlebot" content="index, follow" />
-		<meta name="bingbot" content="index, follow" />
-		<meta name="yandexbot" content="index, follow" />
-		<meta name="sitemap" content="https://joaquinloadenegri.com/sitemap.xml" />
-	</head>
-	<body>
-		
-		<slot />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/png" href="/Logo JLD PNG-Photoroom.png" />
+        <title>Joaquin Loa Denegri's Portfolio</title>
+        <meta name="description" content="Joaquin Loa Denegri's Portfolio" />
+        <meta name="keywords" content="Joaquin Loa Denegri, Portfolio, Developer, Software Engineer, Web Developer, Full Stack Developer, Frontend Developer, Backend Developer, Mobile Developer, AI Developer, Machine Learning Developer, Data Science Developer, Cybersecurity Developer, Blockchain Developer, Cryptocurrency Developer, Crypto Developer, NFT Developer, Smart Contract Developer, Solidity Developer, Ethereum Developer, Bitcoin Developer, Blockchain Developer, Cryptocurrency Developer, Crypto Developer, NFT Developer, Smart Contract Developer, Solidity Developer, Ethereum Developer, Bitcoin Developer" />
+        <meta name="author" content="Joaquin Loa Denegri" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="bingbot" content="index, follow" />
+        <meta name="yandexbot" content="index, follow" />
+        <meta name="sitemap" content="https://joaquinloadenegri.com/sitemap.xml" />
+    </head>
+    <body>
+        
+        <slot />
 
-		<script>
-			import { getLang, setLang, t } from '../utils/i18n';
-			import type { Language } from '../utils/translations';
-		  
-			// Función para actualizar todos los textos de la página
-			function updateContent(lang: Language) {
-			  const trans = t(lang);
-			  
-			  // Actualizar Header
-			  document.querySelectorAll('[data-i18n="header.inicio"]').forEach(el => {
-				el.textContent = trans.header.inicio;
-			  });
-			  document.querySelectorAll('[data-i18n="header.tecnologias"]').forEach(el => {
-				el.textContent = trans.header.tecnologias;
-			  });
-			  document.querySelectorAll('[data-i18n="header.proyectos"]').forEach(el => {
-				el.textContent = trans.header.proyectos;
-			  });
-			  document.querySelectorAll('[data-i18n="header.sobreMi"]').forEach(el => {
-				el.textContent = trans.header.sobreMi;
-			  });
-		  
-			  // Actualizar Hero
-			  document.querySelectorAll('[data-i18n="hero.titulo"]').forEach(el => {
-				el.textContent = trans.hero.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="hero.subtitulo"]').forEach(el => {
-				el.textContent = trans.hero.subtitulo;
-			  });
-			  document.querySelectorAll('[data-i18n="hero.cv"]').forEach(el => {
-				el.textContent = trans.hero.cv;
-			  });
-		  
-			  // Actualizar Technologies
-			  document.querySelectorAll('[data-i18n="technologies.titulo"]').forEach(el => {
-				el.textContent = trans.technologies.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="technologies.descripcion"]').forEach(el => {
-				el.textContent = trans.technologies.descripcion;
-			  });
-		  
-			  // Actualizar Projects
-			  document.querySelectorAll('[data-i18n="projects.titulo"]').forEach(el => {
-				el.textContent = trans.projects.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="projects.todo"]').forEach(el => {
-				el.textContent = trans.projects.todo;
-			  });
-			  document.querySelectorAll('[data-i18n="projects.filtrar"]').forEach(el => {
-				el.textContent = trans.projects.filtrar;
-			  });
-			  document.querySelectorAll('[data-i18n="projects.todos"]').forEach(el => {
-				el.textContent = trans.projects.todos;
-			  });
-			  document.querySelectorAll('[data-i18n="projects.verCodigo"]').forEach(el => {
-				el.textContent = trans.projects.verCodigo;
-			  });
-			  document.querySelectorAll('[data-i18n="projects.liveDemo"]').forEach(el => {
-				el.textContent = trans.projects.liveDemo;
-			  });
-		  
-			  // Actualizar títulos y descripciones de proyectos (0-15)
-			  for (let i = 0; i < 16; i++) {
-				const proyectoKey = `proyecto${i}` as keyof typeof trans.projects;
-				const proyecto = trans.projects[proyectoKey];
-				
-				if (proyecto && typeof proyecto === 'object' && 'titulo' in proyecto && 'descripcion' in proyecto) {
-				  const titulo = document.querySelector(`[data-i18n="projects.proyecto${i}.titulo"]`);
-				  const descripcion = document.querySelector(`[data-i18n="projects.proyecto${i}.descripcion"]`);
-				  if (titulo) titulo.textContent = proyecto.titulo;
-				  if (descripcion) descripcion.textContent = proyecto.descripcion;
-				}
-			  }
-		  
-			  // Actualizar About
-			  document.querySelectorAll('[data-i18n="about.titulo"]').forEach(el => {
-				el.textContent = trans.about.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="about.biografia.titulo"]').forEach(el => {
-				el.textContent = trans.about.biografia.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="about.formulario.titulo"]').forEach(el => {
-				el.textContent = trans.about.formulario.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="about.formulario.descripcion"]').forEach(el => {
-				el.textContent = trans.about.formulario.descripcion;
-			  });
-			  document.querySelectorAll('[data-i18n="about.formulario.nombre"]').forEach(el => {
-				el.textContent = trans.about.formulario.nombre;
-			  });
-			  document.querySelectorAll('[data-i18n="about.formulario.email"]').forEach(el => {
-				el.textContent = trans.about.formulario.email;
-			  });
-			  document.querySelectorAll('[data-i18n="about.formulario.mensaje"]').forEach(el => {
-				el.textContent = trans.about.formulario.mensaje;
-			  });
-			  document.querySelectorAll('[data-i18n="about.formulario.enviar"]').forEach(el => {
-				el.textContent = trans.about.formulario.enviar;
-			  });
-			  document.querySelectorAll('[data-i18n="about.logros.titulo"]').forEach(el => {
-				el.textContent = trans.about.logros.titulo;
-			  });
-		  
-			  // Actualizar elementos con HTML interno (biografía)
-			  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-				const key = el.getAttribute('data-i18n-html');
-				if (!key) return;
-				
-				const keys = key.split('.');
-				let value: any = trans;
-				for (const k of keys) {
-				  value = value?.[k];
-				}
-				
-				if (value && typeof value === 'string') {
-				  // Mantener los spans con clase text-sky-400
-				  const highlighted = value.match(/\*\*(.*?)\*\*/g);
-				  let html = value;
-				  
-				  if (highlighted) {
-					highlighted.forEach(match => {
-					  const text = match.replace(/\*\*/g, '');
-					  html = html.replace(match, `<span class="text-sky-400 font-semibold">${text}</span>`);
-					});
-				  }
-				  
-				  el.innerHTML = html;
-				}
-			  });
-		  
-			  // Actualizar logros
-			  document.querySelectorAll('[data-i18n="about.logros.logro1.titulo"]').forEach(el => {
-				el.textContent = trans.about.logros.logro1.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="about.logros.logro1.descripcion"]').forEach(el => {
-				el.textContent = trans.about.logros.logro1.descripcion;
-			  });
-			  document.querySelectorAll('[data-i18n="about.logros.logro2.titulo"]').forEach(el => {
-				el.textContent = trans.about.logros.logro2.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="about.logros.logro2.descripcion"]').forEach(el => {
-				el.textContent = trans.about.logros.logro2.descripcion;
-			  });
-			  document.querySelectorAll('[data-i18n="about.logros.logro3.titulo"]').forEach(el => {
-				el.textContent = trans.about.logros.logro3.titulo;
-			  });
-			  document.querySelectorAll('[data-i18n="about.logros.logro3.descripcion"]').forEach(el => {
-				el.textContent = trans.about.logros.logro3.descripcion;
-			  });
-		  
-			  // Actualizar placeholders
-			  const nombreInput = document.getElementById('name') as HTMLInputElement;
-			  const emailInput = document.getElementById('email') as HTMLInputElement;
-			  const mensajeTextarea = document.getElementById('message') as HTMLTextAreaElement;
-			  
-			  if (nombreInput) nombreInput.placeholder = trans.about.formulario.nombrePlaceholder;
-			  if (emailInput) emailInput.placeholder = trans.about.formulario.emailPlaceholder;
-			  if (mensajeTextarea) mensajeTextarea.placeholder = trans.about.formulario.mensajePlaceholder;
-		  
-			  // Actualizar Footer
-document.querySelectorAll('[data-i18n="footer.descripcion"]').forEach(el => {
-  el.textContent = trans.footer.descripcion;
-});
-document.querySelectorAll('[data-i18n="footer.enlaces"]').forEach(el => {
-  el.textContent = trans.footer.enlaces;
-});
-document.querySelectorAll('[data-i18n="footer.conecta"]').forEach(el => {
-  el.textContent = trans.footer.conecta;
-});
-document.querySelectorAll('[data-i18n="footer.descargarCV"]').forEach(el => {
-  el.textContent = trans.footer.descargarCV;
-});
-document.querySelectorAll('[data-i18n="footer.copyright"]').forEach(el => {
-  el.textContent = trans.footer.copyright;
-});
-document.querySelectorAll('[data-i18n="footer.hechoCon"]').forEach(el => {
-  el.textContent = trans.footer.hechoCon;
-});
-document.querySelectorAll('[data-i18n="footer.usando"]').forEach(el => {
-  el.textContent = trans.footer.usando;
-});
-			}
-		  
-			// Inicializar idioma al cargar la página
-			document.addEventListener('DOMContentLoaded', () => {
-			  const currentLang = getLang();
-			  const langToggle = document.getElementById('lang-toggle') as HTMLInputElement;
-			  const langToggleMobile = document.getElementById('lang-toggle-mobile') as HTMLInputElement;
-		  
-			  // Establecer estado inicial del switch
-			  if (langToggle) langToggle.checked = currentLang === 'en';
-			  if (langToggleMobile) langToggleMobile.checked = currentLang === 'en';
-		  
-			  // Aplicar traducciones iniciales
-			  updateContent(currentLang);
-		  
-			  // Manejar cambio de idioma (desktop)
-			  langToggle?.addEventListener('change', () => {
-				const newLang: Language = langToggle.checked ? 'en' : 'es';
-				setLang(newLang);
-				updateContent(newLang);
-				
-				// Sincronizar con móvil
-				if (langToggleMobile) langToggleMobile.checked = langToggle.checked;
-			  });
-		  
-			  // Manejar cambio de idioma (móvil)
-			  langToggleMobile?.addEventListener('change', () => {
-				const newLang: Language = langToggleMobile.checked ? 'en' : 'es';
-				setLang(newLang);
-				updateContent(newLang);
-				
-				// Sincronizar con desktop
-				if (langToggle) langToggle.checked = langToggleMobile.checked;
-			  });
-			});
-		  </script>
-		  
-	</body>
+        <script>
+            import { getLang, setLang, t } from '../utils/i18n';
+            import type { Language } from '../utils/translations';
+          
+            // Función para actualizar todos los textos de la página
+            function updateContent(lang: Language) {
+              const trans = t(lang);
+              
+              // Actualizar Header
+              document.querySelectorAll('[data-i18n="header.inicio"]').forEach(el => {
+                el.textContent = trans.header.inicio;
+              });
+              document.querySelectorAll('[data-i18n="header.tecnologias"]').forEach(el => {
+                el.textContent = trans.header.tecnologias;
+              });
+              document.querySelectorAll('[data-i18n="header.proyectos"]').forEach(el => {
+                el.textContent = trans.header.proyectos;
+              });
+              document.querySelectorAll('[data-i18n="header.sobreMi"]').forEach(el => {
+                el.textContent = trans.header.sobreMi;
+              });
+          
+              // Actualizar Hero
+              document.querySelectorAll('[data-i18n="hero.titulo"]').forEach(el => {
+                el.textContent = trans.hero.titulo;
+              });
+              document.querySelectorAll('[data-i18n="hero.subtitulo"]').forEach(el => {
+                el.textContent = trans.hero.subtitulo;
+              });
+              document.querySelectorAll('[data-i18n="hero.cv"]').forEach(el => {
+                el.textContent = trans.hero.cv;
+              });
+          
+              // Actualizar Technologies
+              document.querySelectorAll('[data-i18n="technologies.titulo"]').forEach(el => {
+                el.textContent = trans.technologies.titulo;
+              });
+              document.querySelectorAll('[data-i18n="technologies.descripcion"]').forEach(el => {
+                el.textContent = trans.technologies.descripcion;
+              });
+          
+              // Actualizar Projects
+              document.querySelectorAll('[data-i18n="projects.titulo"]').forEach(el => {
+                el.textContent = trans.projects.titulo;
+              });
+              document.querySelectorAll('[data-i18n="projects.todo"]').forEach(el => {
+                el.textContent = trans.projects.todo;
+              });
+              document.querySelectorAll('[data-i18n="projects.filtrar"]').forEach(el => {
+                el.textContent = trans.projects.filtrar;
+              });
+              document.querySelectorAll('[data-i18n="projects.todos"]').forEach(el => {
+                el.textContent = trans.projects.todos;
+              });
+              document.querySelectorAll('[data-i18n="projects.verCodigo"]').forEach(el => {
+                el.textContent = trans.projects.verCodigo;
+              });
+              document.querySelectorAll('[data-i18n="projects.liveDemo"]').forEach(el => {
+                el.textContent = trans.projects.liveDemo;
+              });
+          
+              // Actualizar títulos y descripciones de proyectos (0-15)
+              for (let i = 0; i < 16; i++) {
+                const proyectoKey = `proyecto${i}` as keyof typeof trans.projects;
+                const proyecto = trans.projects[proyectoKey];
+                
+                if (proyecto && typeof proyecto === 'object' && 'titulo' in proyecto && 'descripcion' in proyecto) {
+                  const titulo = document.querySelector(`[data-i18n="projects.proyecto${i}.titulo"]`);
+                  const descripcion = document.querySelector(`[data-i18n="projects.proyecto${i}.descripcion"]`);
+                  if (titulo) titulo.textContent = proyecto.titulo;
+                  if (descripcion) descripcion.textContent = proyecto.descripcion;
+                }
+              }
+          
+              // Actualizar About
+              document.querySelectorAll('[data-i18n="about.titulo"]').forEach(el => {
+                el.textContent = trans.about.titulo;
+              });
+              document.querySelectorAll('[data-i18n="about.biografia.titulo"]').forEach(el => {
+                el.textContent = trans.about.biografia.titulo;
+              });
+              document.querySelectorAll('[data-i18n="about.formulario.titulo"]').forEach(el => {
+                el.textContent = trans.about.formulario.titulo;
+              });
+              document.querySelectorAll('[data-i18n="about.formulario.descripcion"]').forEach(el => {
+                el.textContent = trans.about.formulario.descripcion;
+              });
+              document.querySelectorAll('[data-i18n="about.formulario.nombre"]').forEach(el => {
+                el.textContent = trans.about.formulario.nombre;
+              });
+              document.querySelectorAll('[data-i18n="about.formulario.email"]').forEach(el => {
+                el.textContent = trans.about.formulario.email;
+              });
+              document.querySelectorAll('[data-i18n="about.formulario.mensaje"]').forEach(el => {
+                el.textContent = trans.about.formulario.mensaje;
+              });
+              document.querySelectorAll('[data-i18n="about.formulario.enviar"]').forEach(el => {
+                el.textContent = trans.about.formulario.enviar;
+              });
+              document.querySelectorAll('[data-i18n="about.logros.titulo"]').forEach(el => {
+                el.textContent = trans.about.logros.titulo;
+              });
+          
+              // Actualizar elementos con HTML interno (biografía)
+              document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                if (!key) return;
+                
+                const keys = key.split('.');
+                let value: any = trans;
+                for (const k of keys) {
+                  value = value?.[k];
+                }
+                
+                if (value && typeof value === 'string') {
+                  // Mantener los spans con clase text-sky-400
+                  const highlighted = value.match(/\*\*(.*?)\*\*/g);
+                  let html = value;
+                  
+                  if (highlighted) {
+                    highlighted.forEach(match => {
+                      const text = match.replace(/\*\*/g, '');
+                      html = html.replace(match, `<span class="text-sky-400 font-semibold">${text}</span>`);
+                    });
+                  }
+                  
+                  el.innerHTML = html;
+                }
+              });
+          
+              // Actualizar logros
+              document.querySelectorAll('[data-i18n="about.logros.logro1.titulo"]').forEach(el => {
+                el.textContent = trans.about.logros.logro1.titulo;
+              });
+              document.querySelectorAll('[data-i18n="about.logros.logro1.descripcion"]').forEach(el => {
+                el.textContent = trans.about.logros.logro1.descripcion;
+              });
+              document.querySelectorAll('[data-i18n="about.logros.logro2.titulo"]').forEach(el => {
+                el.textContent = trans.about.logros.logro2.titulo;
+              });
+              document.querySelectorAll('[data-i18n="about.logros.logro2.descripcion"]').forEach(el => {
+                el.textContent = trans.about.logros.logro2.descripcion;
+              });
+              document.querySelectorAll('[data-i18n="about.logros.logro3.titulo"]').forEach(el => {
+                el.textContent = trans.about.logros.logro3.titulo;
+              });
+              document.querySelectorAll('[data-i18n="about.logros.logro3.descripcion"]').forEach(el => {
+                el.textContent = trans.about.logros.logro3.descripcion;
+              });
+          
+              // Actualizar placeholders
+              const nombreInput = document.getElementById('name') as HTMLInputElement;
+              const emailInput = document.getElementById('email') as HTMLInputElement;
+              const mensajeTextarea = document.getElementById('message') as HTMLTextAreaElement;
+              
+              if (nombreInput) nombreInput.placeholder = trans.about.formulario.nombrePlaceholder;
+              if (emailInput) emailInput.placeholder = trans.about.formulario.emailPlaceholder;
+              if (mensajeTextarea) mensajeTextarea.placeholder = trans.about.formulario.mensajePlaceholder;
+          
+              // Actualizar Footer
+              document.querySelectorAll('[data-i18n="footer.descripcion"]').forEach(el => {
+                el.textContent = trans.footer.descripcion;
+              });
+              document.querySelectorAll('[data-i18n="footer.enlaces"]').forEach(el => {
+                el.textContent = trans.footer.enlaces;
+              });
+              document.querySelectorAll('[data-i18n="footer.conecta"]').forEach(el => {
+                el.textContent = trans.footer.conecta;
+              });
+              document.querySelectorAll('[data-i18n="footer.descargarCV"]').forEach(el => {
+                el.textContent = trans.footer.descargarCV;
+              });
+              document.querySelectorAll('[data-i18n="footer.copyright"]').forEach(el => {
+                el.textContent = trans.footer.copyright;
+              });
+              document.querySelectorAll('[data-i18n="footer.hechoCon"]').forEach(el => {
+                el.textContent = trans.footer.hechoCon;
+              });
+              document.querySelectorAll('[data-i18n="footer.usando"]').forEach(el => {
+                el.textContent = trans.footer.usando;
+              });
+            }
+          
+            // Inicializar idioma al cargar la página
+            document.addEventListener('DOMContentLoaded', () => {
+              const currentLang = getLang();
+              const langToggle = document.getElementById('lang-toggle') as HTMLInputElement;
+              const langToggleMobile = document.getElementById('lang-toggle-mobile') as HTMLInputElement;
+          
+              // Establecer estado inicial del switch
+              if (langToggle) langToggle.checked = currentLang === 'en';
+              if (langToggleMobile) langToggleMobile.checked = currentLang === 'en';
+          
+              // Aplicar traducciones iniciales
+              updateContent(currentLang);
+          
+              // Manejar cambio de idioma (desktop)
+              langToggle?.addEventListener('change', () => {
+                const newLang: Language = langToggle.checked ? 'en' : 'es';
+                setLang(newLang);
+                updateContent(newLang);
+                
+                // Sincronizar con móvil
+                if (langToggleMobile) langToggleMobile.checked = langToggle.checked;
+              });
+          
+              // Manejar cambio de idioma (móvil)
+              langToggleMobile?.addEventListener('change', () => {
+                const newLang: Language = langToggleMobile.checked ? 'en' : 'es';
+                setLang(newLang);
+                updateContent(newLang);
+                
+                // Sincronizar con desktop
+                if (langToggle) langToggle.checked = langToggleMobile.checked;
+              });
+            });
+        </script>
+          
+    </body>
 </html>
 
 <style is:global>
-	@import "tailwindcss";
-	@plugin "@midudev/tailwind-animations";
+    @import "tailwindcss";
+    @plugin "@midudev/tailwind-animations";
 
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #070a17;
-		height: 200vh;
-		
-	}
+    html,
+    body {
+        margin: 0;
+        width: 100%;
+        min-height: 100vh;
+        background-color: #070a17;
+    }
 </style>

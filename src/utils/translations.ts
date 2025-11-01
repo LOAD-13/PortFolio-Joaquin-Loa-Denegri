@@ -59,9 +59,9 @@ export const translations = {
         descripcion: "Generador y evaluador de paletas de colores con IA Gemini. Extrae colores desde imágenes, evalúa armonía y accesibilidad. Exportación multi-formato: HEX, RGB, CSS Variables y Tailwind Config."
       },
       proyecto4: {
-        titulo: "Dashboard Analítico Empresarial Genial",
-        descripcion: "Panel de control interactivo con visualización de métricas en tiempo real. Desarrollado con React y Python, incluye integración con MySQL y gráficas personalizadas para análisis de datos empresariales."
-      },
+        titulo: "GameVault - E-Commerce de Videojuegos",
+        descripcion: "Tienda de videojuegos digitales con Django y Stripe. Sistema completo de compras con carrito, checkout seguro, biblioteca personal, reviews verificadas y códigos de activación. Interfaz gaming moderna con Tailwind."
+      },      
       proyecto5: {
         titulo: "Sistema de Reservas Online Super Genial",
         descripcion: "Plataforma web de reservas online con calendario interactivo y notificaciones automáticas. Desarrollada con Node.js y MongoDB para gestión eficiente de datos y usuarios en tiempo real."
@@ -215,9 +215,9 @@ export const translations = {
         descripcion: "AI-powered color palette generator and evaluator with Gemini. Extracts colors from images, evaluates harmony and accessibility. Multi-format export: HEX, RGB, CSS Variables, and Tailwind Config."
       },
       proyecto4: {
-        titulo: "Business Analytics Dashboard",
-        descripcion: "Interactive control panel with real-time metrics visualization. Developed with React and Python, includes MySQL integration and custom charts for business data analysis."
-      },
+        titulo: "GameVault - Gaming E-Commerce Store",
+        descripcion: "Digital video game store with Django and Stripe. Complete shopping system with cart, secure checkout, personal library, verified reviews, and activation codes. Modern gaming interface with Tailwind."
+      },      
       proyecto5: {
         titulo: "Online Booking System",
         descripcion: "Online booking web platform with interactive calendar and automatic notifications. Developed with Node.js and MongoDB for efficient real-time data and user management."

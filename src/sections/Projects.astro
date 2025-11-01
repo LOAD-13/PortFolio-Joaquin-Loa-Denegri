@@ -41,14 +41,15 @@ const projects = [
   },
   // Proyectos de relleno (pendientes)
   {
-    id: 5,
-    title: "Dashboard Analítico Empresarial",
-    description: "Panel de control interactivo con visualización de métricas en tiempo real. Desarrollado con React y Python, incluye integración con MySQL y gráficas personalizadas para análisis de datos empresariales.",
-    image: "/projects/project5.png",
-    github: "https://github.com/LOAD-13/proyecto5",
-    liveDemo: "",
-    tags: ["React", "Python", "MySQL"]
+  id: 5,
+  title: "GameVault - E-Commerce de Videojuegos",
+  description: "Tienda de videojuegos digitales con Django y Stripe. Sistema completo de compras con carrito, checkout seguro, biblioteca personal, reviews verificadas y códigos de activación. Interfaz gaming moderna con Tailwind.",
+  image: "/projects/GameVault.png",
+  github: "https://github.com/LOAD-13/Game-Vault-E-Comerce",
+  liveDemo: "",
+  tags: ["Python", "Django", "Tailwind CSS", "Stripe", "PostgreSQL"]
   },
+
   {
     id: 6,
     title: "Sistema de Reservas Online",
@@ -181,7 +182,8 @@ const tagColors: Record<string, string> = {
   "Angular": "bg-red-600/20 text-red-300 border-red-600/30",
   "Vue.js": "bg-emerald-400/20 text-emerald-300 border-emerald-400/30",
   "MQTT": "bg-purple-700/20 text-purple-300 border-purple-700/30",
-  "OpenAI": "bg-teal-600/20 text-teal-300 border-teal-600/30"
+  "OpenAI": "bg-teal-600/20 text-teal-300 border-teal-600/30",
+  "Stripe": "bg-purple-600/20 text-purple-400 border-purple-600/30",
 };
 ---
 
@@ -259,25 +261,25 @@ const tagColors: Record<string, string> = {
           <div class="project-card bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-sky-500/20 transition-all duration-300 hover:scale-[1.02] border border-gray-700/50" data-tags={project.tags.join(',')}>
             
             <div class="p-6">
-              <!-- Título del Proyecto -->
-              <h3 class="text-xl font-bold text-white mb-3 min-h-[3.5rem] flex items-center" data-i18n={`projects.proyecto${project.id - 1}.titulo`}>
-                {project.title}
-              </h3>
+  <!-- Título del Proyecto con altura fija -->
+  <h3 class="text-xl font-bold text-white mb-3 h-14 line-clamp-2 flex items-center" data-i18n={`projects.proyecto${project.id - 1}.titulo`}>
+    {project.title}
+  </h3>
 
-              <!-- Descripción -->
-              <p class="text-gray-300 text-sm mb-4 leading-relaxed" data-i18n={`projects.proyecto${project.id - 1}.descripcion`}>
-                {project.description}
-              </p>
+  <!-- Descripción con altura fija -->
+  <p class="text-gray-300 text-sm mb-4 leading-relaxed h-24 line-clamp-5" data-i18n={`projects.proyecto${project.id - 1}.descripcion`}>
+    {project.description}
+  </p>
 
-              <!-- Imagen del Proyecto -->
-              <div class="w-full h-48 bg-gray-800 rounded-xl mb-4 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  class="w-full h-full object-cover"
-                  onerror="this.style.display='none'"
-                />
-              </div>
+  <!-- Imagen del Proyecto -->
+  <div class="w-full h-48 bg-gray-800 rounded-xl mb-4 overflow-hidden">
+    <img 
+      src={project.image} 
+      alt={project.title}
+      class="w-full h-full object-cover"
+      onerror="this.style.display='none'"
+    />
+  </div>
 
               <!-- Botones de Acción -->
               <div class="flex flex-wrap gap-3 mb-4">
@@ -353,29 +355,32 @@ const tagColors: Record<string, string> = {
   }
 
   // Función para mostrar proyectos de la página actual
-  function showPage(page: number) {
-    currentPage = page;
-    
-    // Ocultar todos los proyectos primero
-    filteredCards.forEach(card => {
-      (card as HTMLElement).style.display = 'none';
-    });
+function showPage(page: number, shouldScroll: boolean = true) {
+  currentPage = page;
+  
+  // Ocultar todos los proyectos primero
+  filteredCards.forEach(card => {
+    (card as HTMLElement).style.display = 'none';
+  });
 
-    // Calcular índices de inicio y fin
-    const startIndex = (page - 1) * ITEMS_PER_PAGE;
-    const endIndex = startIndex + ITEMS_PER_PAGE;
+  // Calcular índices de inicio y fin
+  const startIndex = (page - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
 
-    // Mostrar solo los proyectos de la página actual
-    filteredCards.slice(startIndex, endIndex).forEach(card => {
-      (card as HTMLElement).style.display = 'block';
-    });
+  // Mostrar solo los proyectos de la página actual
+  filteredCards.slice(startIndex, endIndex).forEach(card => {
+    (card as HTMLElement).style.display = 'block';
+  });
 
-    // Actualizar controles de paginación
-    renderPaginationControls();
+  // Actualizar controles de paginación
+  renderPaginationControls();
 
-    // Scroll suave hacia arriba
+  // Scroll suave hacia arriba SOLO si es necesario
+  if (shouldScroll) {
     projectsGrid?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+}
+
 
   // Función para renderizar los controles de paginación
   function renderPaginationControls() {
@@ -561,7 +566,7 @@ const tagColors: Record<string, string> = {
 
   // ==================== INICIALIZACIÓN ====================
   calculateTotalPages();
-  showPage(1);
+  showPage(1, false);
 </script>
 
 <style>
