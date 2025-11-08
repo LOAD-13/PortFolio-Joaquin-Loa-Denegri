@@ -63,9 +63,9 @@ export const translations = {
         descripcion: "Tienda de videojuegos digitales con Django y Stripe. Sistema completo de compras con carrito, checkout seguro, biblioteca personal, reviews verificadas y códigos de activación. Interfaz gaming moderna con Tailwind."
       },      
       proyecto5: {
-        titulo: "Sistema de Reservas Online Super Genial",
-        descripcion: "Plataforma web de reservas online con calendario interactivo y notificaciones automáticas. Desarrollada con Node.js y MongoDB para gestión eficiente de datos y usuarios en tiempo real."
-      },
+        titulo: "Pokédex - Explorador Interactivo de Pokémon",
+        descripcion: "Pokédex interactiva con Astro y React. Explora 1000+ Pokémon, compara estadísticas, construye equipos de batalla, analiza efectividad de tipos y accede a enciclopedia completa con movimientos y habilidades."
+      },      
       proyecto6: {
         titulo: "E-Commerce Moderno Full Stack",
         descripcion: "Tienda online completa con carrito de compras, pasarela de pagos y panel administrativo. Construida con MERN stack, incluye autenticación de usuarios y gestión de inventario en tiempo real."
@@ -219,9 +219,9 @@ export const translations = {
         descripcion: "Digital video game store with Django and Stripe. Complete shopping system with cart, secure checkout, personal library, verified reviews, and activation codes. Modern gaming interface with Tailwind."
       },      
       proyecto5: {
-        titulo: "Online Booking System",
-        descripcion: "Online booking web platform with interactive calendar and automatic notifications. Developed with Node.js and MongoDB for efficient real-time data and user management."
-      },
+        titulo: "Pokédex - Interactive Pokémon Explorer",
+        descripcion: "Interactive Pokédex built with Astro and React. Explore 1000+ Pokémon, compare stats, build battle teams, analyze type effectiveness, and access complete encyclopedia with moves and abilities."
+      },      
       proyecto6: {
         titulo: "Modern Full Stack E-Commerce",
         descripcion: "Complete online store with shopping cart, payment gateway, and admin panel. Built with MERN stack, includes user authentication and real-time inventory management."
